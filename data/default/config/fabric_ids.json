@@ -1,9 +1,8 @@
 {
-  "_comment": "This file is populated when you run 02_create_fabric_items.py",
-  "lakehouse_id": null,
-  "lakehouse_name": null,
-  "ontology_id": null,
-  "ontology_name": null,
-  "solution_name": null,
-  "created_at": null
+  "lakehouse_id": "297d7029-b4ef-48d8-98a3-a238ee63f0c6",
+  "lakehouse_name": "da5r46yxvmvn57_lakehouse_1",
+  "ontology_id": "57bb55f0-7c58-40e8-80c6-e534b24771fd",
+  "ontology_name": "da5r46yxvmvn57_ontology_1",
+  "solution_name": "da5r46yxvmvn57",
+  "created_at": "2026-04-16T10:29:57.871030"
 }

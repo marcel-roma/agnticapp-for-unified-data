@@ -36,6 +36,32 @@ import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
+
+def persist_env_value(env_path, key, value):
+    """Persist KEY=VALUE in a .env file without tempfile/move operations."""
+    lines = []
+    if os.path.exists(env_path):
+        with open(env_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+
+    updated = False
+    new_lines = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped and not stripped.startswith("#") and stripped.split("=", 1)[0].strip() == key:
+            new_lines.append(f"{key}={value}\n")
+            updated = True
+        else:
+            new_lines.append(line)
+
+    if not updated:
+        if new_lines and not new_lines[-1].endswith("\n"):
+            new_lines[-1] = new_lines[-1] + "\n"
+        new_lines.append(f"{key}={value}\n")
+
+    with open(env_path, "w", encoding="utf-8") as f:
+        f.writelines(new_lines)
+
 # ============================================================================
 # Configuration
 # ============================================================================
@@ -165,9 +191,8 @@ if not azure_only:
     # Make it available to downstream scripts
     os.environ["FABRIC_WORKSPACE_ID"] = fabric_workspace_id
     # Persist to scripts/.env so subsequent runs don't need to re-enter it
-    from dotenv import set_key
     env_path = os.path.join(script_dir, ".env")
-    set_key(env_path, "FABRIC_WORKSPACE_ID", fabric_workspace_id)
+    persist_env_value(env_path, "FABRIC_WORKSPACE_ID", fabric_workspace_id)
 
 # ============================================================================
 # Interactive Prompts for Data Generation

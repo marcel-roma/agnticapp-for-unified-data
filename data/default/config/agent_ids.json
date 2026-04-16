@@ -1,11 +1,11 @@
 {
   "_comment": "This file is populated when you run 07_create_foundry_agent.py",
-  "chat_agent_id": null,
-  "chat_agent_name": null,
-  "title_agent_id": null,
-  "title_agent_name": null,
-  "search_index": null,
-  "sql_mode": null,
+  "chat_agent_id": "da5r46yxvmvn57-ChatAgent",
+  "chat_agent_name": "da5r46yxvmvn57-ChatAgent",
+  "title_agent_id": "da5r46yxvmvn57-TitleAgent",
+  "title_agent_name": "da5r46yxvmvn57-TitleAgent",
+  "search_index": "knowledge_index",
+  "sql_mode": "fabric",
   "sql_server": null,
   "sql_database": null
 }
